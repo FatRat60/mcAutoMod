@@ -1,5 +1,9 @@
-#include "include/osMethods.h"
+#include "../include/osMethods.h"
 
 int defPathFound() {
+    return 1;
+}
+
+int main() {
     return 1;
 }
