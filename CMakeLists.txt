@@ -16,8 +16,10 @@ endif()
 
 include_directories("${pybind11_INCLUDE_DIR}")
 
+#include_directories("C:/Users/kyleh/AppData/Local/Programs/Python/Python311/include")
+
 # glob to get all common source files
-file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/common/*.cpp")
+set(SOURCES "${CMAKE_SOURCE_DIR}/src/common/methods.cpp" "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
 # get all headers 
 set(HEADERS_DIR "${CMAKE_SOURCE_DIR}/include/mcmodmanager")
@@ -41,6 +43,11 @@ else()
     list(APPEND SOURCES "${CMAKE_SOURCE_DIR}/src/win/methods_win.cpp")
 endif()
 
-message(STATUS ${SOURCES})
-
-pybind11_add_module(mcmod ${SOURCES} ${HEADERS})
+if (!${TEST})
+    message(STATUS "Compiling for Python")
+    list(APPEND SOURCES "${CMAKE_SOURCE_DIR}/src/common/bindings.cpp")
+    pybind11_add_module(mcmod ${SOURCES} ${HEADERS})
+else()
+    message(STATUS "Compiling to test")
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+endif()

@@ -1,6 +1,6 @@
 #ifndef OSMETHODS_H
 #define OSMETHODS_H
 
-int defPathFound();
+int defPathFound(char * username);
 
 #endif
