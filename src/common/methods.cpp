@@ -1,4 +1,4 @@
-#include "../include/methods.h"
+#include "methods.h"
 #include <sys/stat.h>
 
 int defPathFound() {

@@ -37,3 +37,5 @@ class Application(customtkinter.CTk):
             print("Success")
         else :
             print("Nope")
+    
+    mcmod.defPathFound()
