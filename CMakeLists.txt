@@ -17,7 +17,7 @@ endif()
 include_directories("${pybind11_INCLUDE_DIR}")
 
 # glob to get all common source files
-file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/common/*.cpp")# "${CMAKE_SOURCE_DIR}/extern/**/*.cpp")
+file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/common/*.cpp")
 
 # get all headers 
 set(HEADERS_DIR "${CMAKE_SOURCE_DIR}/include/mcmodmanager")
@@ -32,9 +32,9 @@ if (NOT WIN32)
     add_compile_options("-Werror=return-type")
 
     if (APPLE)
-        file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/mac/*.cpp")
+        list(APPEND SOURCES "${CMAKE_SOURCE_DIR}/src/mac/methods_mac.cpp")
     else()
-        file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/linux/*.cpp")
+        list(APPEND SOURCES "${CMAKE_SOURCE_DIR}/src/linux/methods_linux.cpp")
     endif()
 else()
     # Windows
