@@ -1,0 +1,12 @@
+.mixin.out
+config
+defaultconfigs
+libraries
+library
+local
+logs
+mods
+resourcepacks
+resources
+saves
+screenshots
